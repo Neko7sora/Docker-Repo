@@ -8,6 +8,7 @@ on:
     paths:
       - Amazon-Corretto-java8/**
       - Amazon-Corretto-java11/**
+      - Amazon-Corretto-java16/**
       - Amazon-Corretto-java17/**
 jobs:
   push:
@@ -19,6 +20,7 @@ jobs:
         tag:
           - '8'
           - '11'
+          - '16'
           - '17'
     steps:
       - uses: actions/checkout@v2
@@ -39,4 +41,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/mg8853/yolks:amazon-corretto-java${{ matrix.tag }}
+            ghcr.io/Neko7sora/yolks:amazon-corretto-java${{ matrix.tag }}
