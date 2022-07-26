@@ -41,4 +41,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/Neko7sora/yolks:amazon-corretto-java${{ matrix.tag }}
+            ghcr.io/neko7sora/yolks:amazon-corretto-java${{ matrix.tag }}
