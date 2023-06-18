@@ -8,14 +8,12 @@ ENV LANG C.UTF-8
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
-    && apt-get install -y sudo wget git curl unzip git build-essential \
+    && apt-get install -y sudo git curl unzip git build-essential \
     ca-certificates openssl tar sqlite3 fontconfig tzdata iproute2 jq
 
 RUN cd /srv && mkdir jvm && cd jvm && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate \
-    'https://docs.google.com/uc?export=download&id=1cGzuz93Sgu4CkFUPmptj8oGTPk-1kZur' -O- | \
-    sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1cGzuz93Sgu4CkFUPmptj8oGTPk-1kZur" -O graalvm-ee.tar.gz && rm -rf /tmp/cookies.txt && \
-    tar -xzvf graalvm-ee.tar.gz --strip-components 1 && rm graalvm-ee.tar.gz
+    curl https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz && \
+    tar -xzvf graalvm-jdk-17_linux-x64_bin.tar.gz --strip-components 1 && rm graalvm-jdk-17_linux-x64_bin.tar.gz
 
 ENV PATH=/srv/jvm/bin:$PATH
 ENV JAVA_HOME=/srv/jvm
